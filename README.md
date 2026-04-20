@@ -66,7 +66,7 @@ This project was developed as part of academic work in **high-speed networks and
 ## 📎 Structure
 
 ```plaintext
-islip/          # iSLIP scheduling algorithm implementation
-simulations/    # throughput and switching behavior simulations
-ip_packet/      # IPv4 packet construction and parsing
+islip/                  # iSLIP scheduling algorithm implementation
+throughput_simulation/  # HOL-blocking throughput simulation
+ip_packet/              # IPv4 packet construction and parsing
 ```
