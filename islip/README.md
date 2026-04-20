@@ -1,13 +1,13 @@
 # iSLIP Scheduling Simulation (C++)
 
-##  Overview
+## 📌 Overview
 This module implements a simulation of the **iSLIP scheduling algorithm**, a widely used arbitration mechanism for **input-queued (IQ) network switches** with **Virtual Output Queues (VOQ)**.
 
 The implementation models a **single scheduling cycle**, including the core **grant–accept mechanism** and **round-robin pointer updates**, which are essential for achieving fairness and high throughput in high-speed switches.
 
 ---
 
-##  Background
+## 🧠 Background
 
 In input-queued switches, multiple inputs may request the same output simultaneously, leading to contention and performance degradation (e.g., Head-of-Line blocking).
 
@@ -25,25 +25,25 @@ This allows the switch to:
 
 ## ⚙️ Implementation Details
 
-###  Grant Phase
+### Grant Phase
 Each **unmatched output** selects one requesting input  
 based on its **round-robin pointer**
 
-###  Accept Phase
+### Accept Phase
 Each **unmatched input** accepts one of the received grants  
 based on its **round-robin pointer**
 
-###  Pointer Updates
+### Pointer Updates
 Pointers are updated **only for accepted matches**  
 (this is the defining characteristic of iSLIP)
 
-###  Iterative Matching
+### Iterative Matching
 The algorithm runs for a bounded number of iterations (`max_iters`)  
 and stops early if no further matches can be made
 
 ---
 
-##  Input Representation
+## 📊 Input Representation
 
 - `request_matrix[i][j] = 1`  
   → Input `i` has a packet destined for Output `j`
@@ -54,7 +54,7 @@ and stops early if no further matches can be made
 
 ---
 
-##  Output
+## 📦 Output
 
 The function returns:
 
@@ -67,8 +67,47 @@ The function returns:
 
 ---
 
-##  Build & Run
+## 🚀 Build & Run
 
 ### Compile
 ```bash
 g++ -std=c++17 -O2 islip.cpp demo_islip.cpp -o islip_demo
+```
+
+### Run
+```bash
+./islip_demo
+```
+
+---
+
+## 🖥 Example Output
+
+The program prints:
+- Matching matrix  
+- Updated input/output pointers  
+- Matched input → output pairs  
+
+---
+
+## 🧩 Key Concepts Demonstrated
+
+- iSLIP scheduling algorithm  
+- Virtual Output Queues (VOQ)  
+- Round-robin arbitration  
+- Matching under contention  
+- Head-of-Line (HOL) blocking mitigation  
+- System-level modeling of network switches  
+
+---
+
+## 🎯 Purpose
+
+This implementation was developed as part of academic work in **high-speed networking and systems**, with the goal of understanding how modern switches perform **fair and efficient scheduling under load**.
+
+---
+
+## 📎 Notes
+
+- This simulation models **a single scheduling cycle**, not a full multi-timeslot switch  
+- Can be extended to simulate continuous traffic and evaluate long-term performance  
